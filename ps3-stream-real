@@ -1,0 +1,10 @@
+TARGET := ps3stream
+BUILD := build
+SOURCES := source/main.c
+TITLE := PS3 Stream App
+
+CFLAGS := -O2 -Wall
+LDFLAGS :=
+LIBS := -lrsx -lgcm_sys -lsysmodule -lio -lc -lm
+
+include $(PSL1GHT)/ppu_rules
