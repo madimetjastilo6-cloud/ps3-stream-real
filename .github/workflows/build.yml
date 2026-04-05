@@ -19,8 +19,10 @@ jobs:
             zlib1g-dev libelf-dev libtool libtool-bin bzip2 libgmp3-dev pkg-config \
             g++ libssl-dev clang
 
-      - name: Create PS3DEV folder
-        run: sudo mkdir -p /usr/local/ps3dev
+      - name: Create and own PS3DEV folder
+        run: |
+          sudo mkdir -p /usr/local/ps3dev
+          sudo chown -R $USER:$USER /usr/local/ps3dev
 
       - name: Set PS3DEV
         run: echo "PS3DEV=/usr/local/ps3dev" >> $GITHUB_ENV
@@ -45,6 +47,9 @@ jobs:
 
       - name: Upload PKG
         uses: actions/upload-artifact@v4
+        with:
+          name: ps3-pkg
+          path: "*.pkg" actions/upload-artifact@v4
         with:
           name: ps3-pkg
           path: "*.pkg"
