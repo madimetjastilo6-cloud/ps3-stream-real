@@ -1,4 +1,4 @@
- name: Build PS3 PKG
+name: Build PS3 PKG
 
 on:
   push:
@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ps3-pkg
-          path: "*.pkg"
+          path: "*.pkg"kg"
