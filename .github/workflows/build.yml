@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
@@ -25,7 +26,8 @@ jobs:
           sudo chown -R $USER:$USER /usr/local/ps3dev
 
       - name: Set PS3DEV
-        run: echo "PS3DEV=/usr/local/ps3dev" >> $GITHUB_ENV
+        run: |
+          echo "PS3DEV=/usr/local/ps3dev" >> $GITHUB_ENV
 
       - name: Install PS3 toolchain
         run: |
@@ -33,7 +35,7 @@ jobs:
           cd ps3toolchain
           ./toolchain.sh
 
-      - name: Set environment
+      - name: Set build environment
         run: |
           echo "PSL1GHT=/usr/local/ps3dev/psl1ght" >> $GITHUB_ENV
           echo "/usr/local/ps3dev/bin" >> $GITHUB_PATH
@@ -49,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ps3-pkg
-          path: "*.pkg" 
+          path: "*.pkg"
